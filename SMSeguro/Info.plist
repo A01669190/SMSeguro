@@ -21,5 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>SMSeguro usa la cámara para adjuntar evidencia del fraude.</string>
 </dict>
 </plist>
