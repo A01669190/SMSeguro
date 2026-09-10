@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		427E0CC5304E19C900D166F2 /* NuevoReporteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E0CC4304E19C800D166F2 /* NuevoReporteViewController.swift */; };
+		427E0CC7304E271200D166F2 /* DetalleReporteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E0CC6304E271200D166F2 /* DetalleReporteViewController.swift */; };
+		42C8F8AF305226CD0015F58E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 42C8F8AE305226C80015F58E /* README.md */; };
+		42C8F8C6305228550015F58E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 42C8F8C5305228550015F58E /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		425968A9304CFD0D00841AE9 /* SMSeguro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMSeguro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		427E0CC4304E19C800D166F2 /* NuevoReporteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoReporteViewController.swift; sourceTree = "<group>"; };
+		427E0CC6304E271200D166F2 /* DetalleReporteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleReporteViewController.swift; sourceTree = "<group>"; };
+		42C8F8AE305226C80015F58E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		42C8F8C5305228550015F58E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +56,10 @@
 		425968A0304CFD0D00841AE9 = {
 			isa = PBXGroup;
 			children = (
+				42C8F8AE305226C80015F58E /* README.md */,
+				42C8F8C5305228550015F58E /* .gitignore */,
+				427E0CC6304E271200D166F2 /* DetalleReporteViewController.swift */,
+				427E0CC4304E19C800D166F2 /* NuevoReporteViewController.swift */,
 				425968AB304CFD0D00841AE9 /* SMSeguro */,
 				425968AA304CFD0D00841AE9 /* Products */,
 			);
@@ -122,6 +137,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C8F8C6305228550015F58E /* .gitignore in Resources */,
+				42C8F8AF305226CD0015F58E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427E0CC7304E271200D166F2 /* DetalleReporteViewController.swift in Sources */,
+				427E0CC5304E19C900D166F2 /* NuevoReporteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

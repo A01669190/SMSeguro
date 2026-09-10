@@ -5,11 +5,9 @@ import PhotosUI
 //  SMSeguro — Pantalla "Nuevo Reporte"
 //
 //  Se encarga de dos cosas:
-//    1. El selector de Categoría (lista desplegable)
-//    2. La foto de evidencia (cámara o galería)
+//  El selector de Categoría (lista desplegable)
+//  La foto de evidencia (cámara o galería)
 //
-//  IMPORTANTE: la cámara NO funciona en el simulador, solo en un
-//  iPhone real. En el simulador usa "Elegir de la galería".
 // =====================================================================
 
 final class NuevoReporteViewController: UIViewController {
