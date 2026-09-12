@@ -11,18 +11,84 @@ import PhotosUI
 // =====================================================================
 
 final class NuevoReporteViewController: UIViewController {
+    
+    private func validarNumero(_ texto: String) -> Bool {
+        let numeros = texto.filter { $0.isNumber }
+        return numeros.count == 10
+    }
+
+    private func validarURL(_ texto: String) -> Bool {
+        guard let url = URL(string: texto),
+              let esquema = url.scheme,
+              let host = url.host,
+              !host.isEmpty else {
+            return false
+        }
+
+        return esquema == "http" || esquema == "https"
+    }
+    
+    private func mostrarAlerta(titulo: String, mensaje: String) {
+        let alerta = UIAlertController(
+            title: titulo,
+            message: mensaje,
+            preferredStyle: .alert
+        )
+
+        alerta.addAction(UIAlertAction(title: "Aceptar", style: .default))
+        present(alerta, animated: true)
+    }
+    
+    @objc private func camposCambiaron() {
+        actualizarEstadoBoton()
+    }
+
+    private func actualizarEstadoBoton() {
+        let urlValida = validarURL(campoURL.text ?? "")
+        let numeroValido = validarNumero(campoNumero.text ?? "")
+
+        botonRealizarReporte.isEnabled = urlValida && numeroValido
+        botonRealizarReporte.alpha = botonRealizarReporte.isEnabled ? 1.0 : 0.5
+    }
 
     // MARK: - Conexiones al Storyboard
 
     /// Botón "Selecciona una opción"
     @IBOutlet weak var botonCategoria: UIButton!
 
+    @IBOutlet weak var campoURL: UITextField!
+    @IBOutlet weak var campoNumero: UITextField!
     /// Botón grande "Toma foto o sube imagen"
     @IBOutlet weak var botonFoto: UIButton!
+    @IBOutlet weak var botonRealizarReporte: UIButton!
     @IBAction func cerrarPantalla(_ sender: Any) {
             dismiss(animated: true)
         }
+    @IBAction func realizarReporte(_ sender: UIButton) {
+        guard let urlTexto = campoURL.text,
+              validarURL(urlTexto) else {
+            mostrarAlerta(
+                titulo: "URL inválida",
+                mensaje: "Ingresa una URL válida que comience con http:// o https://"
+            )
+            return
+        }
 
+        guard let numeroTexto = campoNumero.text,
+              validarNumero(numeroTexto) else {
+            mostrarAlerta(
+                titulo: "Número inválido",
+                mensaje: "Ingresa un número telefónico de 10 dígitos."
+            )
+            return
+        }
+
+        mostrarAlerta(
+            titulo: "Datos válidos",
+            mensaje: "La URL y el número remitente tienen un formato correcto."
+        )
+    }
+    
     // MARK: - Configuración
 
     private let categorias = [
@@ -52,6 +118,13 @@ final class NuevoReporteViewController: UIViewController {
         super.viewDidLoad()
         prepararSelector()
         prepararBotonFoto()
+        campoNumero.keyboardType = .numberPad
+        campoURL.keyboardType = .URL
+        campoURL.addTarget(self, action: #selector(camposCambiaron), for: .editingChanged)
+        campoNumero.addTarget(self, action: #selector(camposCambiaron), for: .editingChanged)
+
+        actualizarEstadoBoton()
+
     }
 
 

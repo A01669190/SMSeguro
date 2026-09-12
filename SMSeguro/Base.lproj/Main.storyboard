@@ -885,11 +885,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hhm-uU-1VK">
-                                <rect key="frame" x="0.0" y="59" width="393" height="724"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hhm-uU-1VK">
+                                <rect key="frame" x="0.0" y="67" width="393" height="724"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="ZxN-g8-wPT">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="627"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="ZxN-g8-wPT">
+                                        <rect key="frame" x="0.0" y="17" width="393" height="707.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="eem-EQ-xhc">
                                                 <rect key="frame" x="20" y="20.000000000000004" width="353" height="34.333333333333343"/>
@@ -929,14 +929,25 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción breve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgS-GS-8xg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Número remitente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofI-GF-Doa">
                                                 <rect key="frame" x="20" y="147.66666666666666" width="353" height="20.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="groupTableViewBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ej. 5512345678" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9mi-fk-oSM">
+                                                <rect key="frame" x="20" y="181" width="353" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción breve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgS-GS-8xg">
+                                                <rect key="frame" x="20" y="228" width="353" height="20.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Describe brevemente qué encontraste y por qué crees que es fraude..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eSW-hJ-czJ">
-                                                <rect key="frame" x="20" y="181" width="353" height="140"/>
+                                                <rect key="frame" x="20" y="261.33333333333331" width="353" height="140"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="140" id="Odv-3H-uDA"/>
@@ -951,13 +962,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categoría" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAs-sn-hX1">
-                                                <rect key="frame" x="20" y="334" width="353" height="20.333333333333314"/>
+                                                <rect key="frame" x="20" y="414.33333333333331" width="353" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Al0-T5-okl">
-                                                <rect key="frame" x="20" y="367.33333333333331" width="353" height="30"/>
+                                                <rect key="frame" x="20" y="447.66666666666669" width="353" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Selecciona una opción">
                                                     <color key="titleColor" red="0.6665039062" green="0.6665039062" blue="0.6665039062" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -969,13 +980,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foto de evidencia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJv-CR-0L6">
-                                                <rect key="frame" x="20" y="410.33333333333331" width="353" height="20.333333333333314"/>
+                                                <rect key="frame" x="20" y="490.66666666666663" width="353" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khQ-9a-LI1">
-                                                <rect key="frame" x="20" y="443.66666666666669" width="353" height="62.666666666666686"/>
+                                                <rect key="frame" x="20" y="524" width="353" height="62.666666666666629"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="tintColor" red="0.6665039062" green="0.6665039062" blue="0.6665039062" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Button"/>
@@ -984,23 +995,23 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFI-5b-aSz">
-                                                <rect key="frame" x="20" y="519.33333333333337" width="353" height="34.333333333333371"/>
+                                                <rect key="frame" x="20" y="599.66666666666663" width="353" height="34.333333333333371"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Realizar reporte">
                                                     <color key="baseForegroundColor" red="0.6665039062" green="0.6665039062" blue="0.6665039062" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="realizarReporte:" destination="2hP-Yp-vS6" eventType="touchUpInside" id="8C3-CN-VJG"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tu reporte será revisado por nuestro equipo de verificación." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nL-S0-xEt">
-                                                <rect key="frame" x="20" y="566.66666666666663" width="353" height="20.333333333333371"/>
+                                                <rect key="frame" x="20" y="647" width="353" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="CFI-5b-aSz" firstAttribute="top" secondItem="khQ-9a-LI1" secondAttribute="bottom" constant="25" id="leI-VR-0Mm"/>
-                                        </constraints>
                                         <edgeInsets key="layoutMargins" top="20" left="20" bottom="40" right="20"/>
                                     </stackView>
                                 </subviews>
@@ -1027,6 +1038,9 @@
                     <connections>
                         <outlet property="botonCategoria" destination="Al0-T5-okl" id="BDS-KS-UGu"/>
                         <outlet property="botonFoto" destination="khQ-9a-LI1" id="zQ2-uC-ec2"/>
+                        <outlet property="botonRealizarReporte" destination="CFI-5b-aSz" id="px0-NS-ezr"/>
+                        <outlet property="campoNumero" destination="9mi-fk-oSM" id="3JB-Ff-Y5D"/>
+                        <outlet property="campoURL" destination="AGw-IH-bXC" id="M1f-0u-PDw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvM-cU-ot2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -61946,11 +61960,14 @@ tQ
         <image name="lanyardcard.fill" catalog="system" width="108" height="128"/>
         <image name="logo_escudo" width="277" height="225.5"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.21960784310000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.2196078431372549" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
