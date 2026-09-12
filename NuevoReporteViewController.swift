@@ -11,12 +11,30 @@ import PhotosUI
 // =====================================================================
 
 final class NuevoReporteViewController: UIViewController {
+    
+    private func validarNumero(_ texto: String) -> Bool {
+        let numeros = texto.filter { $0.isNumber }
+        return numeros.count == 10
+    }
+
+    private func validarURL(_ texto: String) -> Bool {
+        guard let url = URL(string: texto),
+              let esquema = url.scheme,
+              let host = url.host,
+              !host.isEmpty else {
+            return false
+        }
+
+        return esquema == "http" || esquema == "https"
+    }
 
     // MARK: - Conexiones al Storyboard
 
     /// Botón "Selecciona una opción"
     @IBOutlet weak var botonCategoria: UIButton!
 
+    @IBOutlet weak var campoURL: UITextField!
+    @IBOutlet weak var campoNumero: UITextField!
     /// Botón grande "Toma foto o sube imagen"
     @IBOutlet weak var botonFoto: UIButton!
     @IBAction func cerrarPantalla(_ sender: Any) {
@@ -52,7 +70,8 @@ final class NuevoReporteViewController: UIViewController {
         super.viewDidLoad()
         prepararSelector()
         prepararBotonFoto()
-    }
+        campoNumero.keyboardType = .numberPad
+        campoURL.keyboardType = .URL    }
 
 
     // =================================================================
