@@ -885,8 +885,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hhm-uU-1VK">
-                                <rect key="frame" x="0.0" y="59" width="393" height="724"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hhm-uU-1VK">
+                                <rect key="frame" x="0.0" y="67" width="393" height="724"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="ZxN-g8-wPT">
                                         <rect key="frame" x="0.0" y="17" width="393" height="707.33333333333337"/>
@@ -1001,6 +1001,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="Realizar reporte">
                                                     <color key="baseForegroundColor" red="0.6665039062" green="0.6665039062" blue="0.6665039062" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="realizarReporte:" destination="2hP-Yp-vS6" eventType="touchUpInside" id="8C3-CN-VJG"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tu reporte será revisado por nuestro equipo de verificación." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nL-S0-xEt">
                                                 <rect key="frame" x="20" y="647" width="353" height="20.333333333333371"/>
@@ -1009,9 +1012,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="CFI-5b-aSz" firstAttribute="top" secondItem="khQ-9a-LI1" secondAttribute="bottom" constant="25" id="leI-VR-0Mm"/>
-                                        </constraints>
                                         <edgeInsets key="layoutMargins" top="20" left="20" bottom="40" right="20"/>
                                     </stackView>
                                 </subviews>

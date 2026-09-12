@@ -27,7 +27,17 @@ final class NuevoReporteViewController: UIViewController {
 
         return esquema == "http" || esquema == "https"
     }
+    
+    private func mostrarAlerta(titulo: String, mensaje: String) {
+        let alerta = UIAlertController(
+            title: titulo,
+            message: mensaje,
+            preferredStyle: .alert
+        )
 
+        alerta.addAction(UIAlertAction(title: "Aceptar", style: .default))
+        present(alerta, animated: true)
+    }
     // MARK: - Conexiones al Storyboard
 
     /// Botón "Selecciona una opción"
@@ -40,7 +50,31 @@ final class NuevoReporteViewController: UIViewController {
     @IBAction func cerrarPantalla(_ sender: Any) {
             dismiss(animated: true)
         }
+    @IBAction func realizarReporte(_ sender: UIButton) {
+        guard let urlTexto = campoURL.text,
+              validarURL(urlTexto) else {
+            mostrarAlerta(
+                titulo: "URL inválida",
+                mensaje: "Ingresa una URL válida que comience con http:// o https://"
+            )
+            return
+        }
 
+        guard let numeroTexto = campoNumero.text,
+              validarNumero(numeroTexto) else {
+            mostrarAlerta(
+                titulo: "Número inválido",
+                mensaje: "Ingresa un número telefónico de 10 dígitos."
+            )
+            return
+        }
+
+        mostrarAlerta(
+            titulo: "Datos válidos",
+            mensaje: "La URL y el número remitente tienen un formato correcto."
+        )
+    }
+    
     // MARK: - Configuración
 
     private let categorias = [
