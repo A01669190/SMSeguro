@@ -38,6 +38,19 @@ final class NuevoReporteViewController: UIViewController {
         alerta.addAction(UIAlertAction(title: "Aceptar", style: .default))
         present(alerta, animated: true)
     }
+    
+    @objc private func camposCambiaron() {
+        actualizarEstadoBoton()
+    }
+
+    private func actualizarEstadoBoton() {
+        let urlValida = validarURL(campoURL.text ?? "")
+        let numeroValido = validarNumero(campoNumero.text ?? "")
+
+        botonRealizarReporte.isEnabled = urlValida && numeroValido
+        botonRealizarReporte.alpha = botonRealizarReporte.isEnabled ? 1.0 : 0.5
+    }
+
     // MARK: - Conexiones al Storyboard
 
     /// Botón "Selecciona una opción"
@@ -47,6 +60,7 @@ final class NuevoReporteViewController: UIViewController {
     @IBOutlet weak var campoNumero: UITextField!
     /// Botón grande "Toma foto o sube imagen"
     @IBOutlet weak var botonFoto: UIButton!
+    @IBOutlet weak var botonRealizarReporte: UIButton!
     @IBAction func cerrarPantalla(_ sender: Any) {
             dismiss(animated: true)
         }
@@ -105,7 +119,13 @@ final class NuevoReporteViewController: UIViewController {
         prepararSelector()
         prepararBotonFoto()
         campoNumero.keyboardType = .numberPad
-        campoURL.keyboardType = .URL    }
+        campoURL.keyboardType = .URL
+        campoURL.addTarget(self, action: #selector(camposCambiaron), for: .editingChanged)
+        campoNumero.addTarget(self, action: #selector(camposCambiaron), for: .editingChanged)
+
+        actualizarEstadoBoton()
+
+    }
 
 
     // =================================================================

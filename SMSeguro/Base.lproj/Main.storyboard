@@ -1038,6 +1038,7 @@
                     <connections>
                         <outlet property="botonCategoria" destination="Al0-T5-okl" id="BDS-KS-UGu"/>
                         <outlet property="botonFoto" destination="khQ-9a-LI1" id="zQ2-uC-ec2"/>
+                        <outlet property="botonRealizarReporte" destination="CFI-5b-aSz" id="px0-NS-ezr"/>
                         <outlet property="campoNumero" destination="9mi-fk-oSM" id="3JB-Ff-Y5D"/>
                         <outlet property="campoURL" destination="AGw-IH-bXC" id="M1f-0u-PDw"/>
                     </connections>
