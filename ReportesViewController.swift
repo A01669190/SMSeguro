@@ -12,10 +12,22 @@ class ReportesViewController: UIViewController {
     @IBOutlet weak var stackTarjetas: UIStackView!
     @IBOutlet weak var lblEstadoVacio: UILabel!
     
+    var reportesPendientes: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func configurarEstadoVacio() {
+        if reportesPendientes.isEmpty {
+            stackTarjetas.isHidden = true
+            lblEstadoVacio.isHidden = false
+        } else {
+            lblEstadoVacio.isHidden = true
+            stackTarjetas.isHidden = false
+        }
     }
     
 
