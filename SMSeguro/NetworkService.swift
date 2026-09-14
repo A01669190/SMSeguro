@@ -11,7 +11,7 @@ final class NetworkService {
     static let shared = NetworkService()
     private init() {}
 
-    func sendReport(endpoint: String, payload: [String: Any], completion: @escaping (Result) -> Void) {
+    func sendReport(endpoint: String, payload: [String: Any], completion: @escaping (Result <Bool,NetworkError>) -> Void) {
         guard let url = URL(string: endpoint) else {
             completion(.failure(.invalidURL))
             return
@@ -41,7 +41,7 @@ final class NetworkService {
         }.resume()
     }
 
-    func checkThreat(indicator: String, completion: @escaping (Result) -> Void) {
+    func checkThreat(indicator: String, completion: @escaping (Result <Bool,NetworkError>) -> Void) {
         guard let url = URL(string: "http://localhost:3000/threats?query=\(indicator)") else {
             completion(.failure(.invalidURL))
             return
