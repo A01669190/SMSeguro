@@ -1,0 +1,44 @@
+//
+//  ReportesViewController.swift
+//  SMSeguro
+//
+//  Created by alumno on 14/09/26.
+//
+
+import UIKit
+
+class ReportesViewController: UIViewController {
+    
+    @IBOutlet weak var stackTarjetas: UIStackView!
+    @IBOutlet weak var lblEstadoVacio: UILabel!
+    
+    var reportesPendientes: [String] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    func configurarEstadoVacio() {
+        if reportesPendientes.isEmpty {
+            stackTarjetas.isHidden = true
+            lblEstadoVacio.isHidden = false
+        } else {
+            lblEstadoVacio.isHidden = true
+            stackTarjetas.isHidden = false
+        }
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

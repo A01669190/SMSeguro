@@ -160,7 +160,7 @@
         <!--home-->
         <scene sceneID="rRM-WE-wDH">
             <objects>
-                <viewController id="JFL-pT-L8i" sceneMemberID="viewController">
+                <viewController id="JFL-pT-L8i" customClass="ReportesViewController" customModule="SMSeguro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GDd-DL-Wjr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +190,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pv-Wh-LcT">
+                                <rect key="frame" x="20" y="426" width="353" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RID-DN-cui">
                                 <rect key="frame" x="0.0" y="174.33333333333334" width="393" height="44"/>
                                 <subviews>
@@ -803,10 +810,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="home" image="house.fill" catalog="system" id="Dit-8r-P7L"/>
                     <navigationItem key="navigationItem" id="J6b-Q0-A8M"/>
+                    <connections>
+                        <outlet property="lblEstadoVacio" destination="5Pv-Wh-LcT" id="D0e-Dq-2mK"/>
+                        <outlet property="stackTrajetas" destination="YWH-yY-sXS" id="LGg-yG-uM2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odI-3s-6tv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2592" y="592"/>
+            <point key="canvasLocation" x="2661.8320610687024" y="706.33802816901414"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="xsF-qG-v9Q">
@@ -61967,7 +61978,7 @@ tQ
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.2196078431372549" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.21960784310000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
