@@ -138,7 +138,9 @@ final class NuevoReporteViewController: UIViewController {
         // NUEVO: Botón "Listo" para el teclado numérico
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
+        
         let botonListo = UIBarButtonItem(title: "Listo", style: .done, target: self.view, action: #selector(UIView.endEditing))
+        
         let espacio = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolbar.setItems([espacio, botonListo], animated: false)
         campoNumero.inputAccessoryView = toolbar
