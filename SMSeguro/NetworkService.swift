@@ -40,4 +40,23 @@ final class NetworkService {
             completion(.success(true))
         }.resume()
     }
+
+    func checkThreat(indicator: String, completion: @escaping (Result) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/threats?query=\(indicator)") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { _, response, error in
+            if error != nil {
+                completion(.failure(.noData))
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                completion(.failure(.serverError(404)))
+                return
+            }
+            completion(.success(true))
+        }.resume()
+    }
 }
