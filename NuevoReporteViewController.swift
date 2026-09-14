@@ -11,18 +11,94 @@ import PhotosUI
 // =====================================================================
 
 final class NuevoReporteViewController: UIViewController {
+    
+    private func validarNumero(_ texto: String) -> Bool {
+        let numeros = texto.filter { $0.isNumber }
+        return numeros.count == 10
+    }
+
+    private func validarURL(_ texto: String) -> Bool {
+        guard let url = URL(string: texto),
+              let esquema = url.scheme,
+              let host = url.host,
+              !host.isEmpty else {
+            return false
+        }
+
+        return esquema == "http" || esquema == "https"
+    }
+    
+    private func mostrarAlerta(titulo: String, mensaje: String) {
+        let alerta = UIAlertController(
+            title: titulo,
+            message: mensaje,
+            preferredStyle: .alert
+        )
+
+        alerta.addAction(UIAlertAction(title: "Aceptar", style: .default))
+        present(alerta, animated: true)
+    }
+    
+    @objc private func camposCambiaron() {
+        actualizarEstadoBoton()
+    }
+
+    private func actualizarEstadoBoton() {
+        let urlValida = validarURL(campoURL.text ?? "")
+        let numeroValido = validarNumero(campoNumero.text ?? "")
+
+        botonRealizarReporte.isEnabled = urlValida && numeroValido
+        botonRealizarReporte.alpha = botonRealizarReporte.isEnabled ? 1.0 : 0.5
+    }
 
     // MARK: - Conexiones al Storyboard
 
     /// Botón "Selecciona una opción"
     @IBOutlet weak var botonCategoria: UIButton!
 
+    @IBOutlet weak var campoURL: UITextField!
+    @IBOutlet weak var campoNumero: UITextField!
     /// Botón grande "Toma foto o sube imagen"
     @IBOutlet weak var botonFoto: UIButton!
+    @IBOutlet weak var botonRealizarReporte: UIButton!
+    
     @IBAction func cerrarPantalla(_ sender: Any) {
             dismiss(animated: true)
         }
+    
+    @IBAction func realizarReporte(_ sender: UIButton) {
+        guard let urlTexto = campoURL.text,
+              validarURL(urlTexto) else {
+            mostrarAlerta(
+                titulo: "URL inválida",
+                mensaje: "Ingresa una URL válida que comience con http:// o https://"
+            )
+            return
+        }
 
+        guard let numeroTexto = campoNumero.text,
+              validarNumero(numeroTexto) else {
+            mostrarAlerta(
+                titulo: "Número inválido",
+                mensaje: "Ingresa un número telefónico de 10 dígitos."
+            )
+            return
+        }
+
+        mostrarAlerta(
+            titulo: "Datos válidos",
+            mensaje: "La URL y el número remitente tienen un formato correcto."
+        )
+        
+        // NUEVO: Limpia el formulario tras un reporte exitoso
+        campoURL.text = ""
+        campoNumero.text = ""
+        mostrarFoto(nil)
+        categoriaSeleccionada = nil
+        ponerTitulo("Selecciona una opción", en: botonCategoria, color: .lightGray)
+        actualizarEstadoBoton()
+    }
+    
     // MARK: - Configuración
 
     private let categorias = [
@@ -52,8 +128,23 @@ final class NuevoReporteViewController: UIViewController {
         super.viewDidLoad()
         prepararSelector()
         prepararBotonFoto()
-    }
+        campoNumero.keyboardType = .numberPad
+        campoURL.keyboardType = .URL
+        campoURL.addTarget(self, action: #selector(camposCambiaron), for: .editingChanged)
+        campoNumero.addTarget(self, action: #selector(camposCambiaron), for: .editingChanged)
 
+        actualizarEstadoBoton()
+
+        // NUEVO: Botón "Listo" para el teclado numérico
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let botonListo = UIBarButtonItem(title: "Listo", style: .done, target: self.view, action: #selector(UIView.endEditing))
+        
+        let espacio = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([espacio, botonListo], animated: false)
+        campoNumero.inputAccessoryView = toolbar
+    }
 
     // =================================================================
     //  MARK: - Selector de categoría
@@ -128,7 +219,6 @@ final class NuevoReporteViewController: UIViewController {
         }
     }
 
-
     // =================================================================
     //  MARK: - Foto de evidencia
     // =================================================================
@@ -180,8 +270,6 @@ final class NuevoReporteViewController: UIViewController {
     }
 
     private func abrirGaleria() {
-        // PHPickerViewController es el selector moderno: no pide permisos
-        // y el usuario solo comparte la foto que elige.
         var config = PHPickerConfiguration()
         config.filter = .images
         config.selectionLimit = 1
@@ -206,7 +294,6 @@ final class NuevoReporteViewController: UIViewController {
         }
     }
 
-
     // =================================================================
     //  MARK: - Utilidades
     // =================================================================
@@ -221,7 +308,6 @@ final class NuevoReporteViewController: UIViewController {
         }
     }
 }
-
 
 // MARK: - Cámara
 
@@ -242,7 +328,6 @@ extension NuevoReporteViewController: UIImagePickerControllerDelegate,
     }
 }
 
-
 // MARK: - Galería
 
 extension NuevoReporteViewController: PHPickerViewControllerDelegate {
@@ -259,32 +344,9 @@ extension NuevoReporteViewController: PHPickerViewControllerDelegate {
                 if let error { print("No se pudo cargar la imagen:", error) }
                 return
             }
-            // La carga ocurre en segundo plano; la interfaz se toca en el hilo principal.
             DispatchQueue.main.async {
                 self?.mostrarFoto(imagen)
             }
         }
     }
 }
-
-
-// =====================================================================
-//  CÓMO CONECTARLO
-//
-//  1. Reemplaza el archivo anterior con este.
-//
-//  2. Conecta el outlet nuevo:
-//     Ctrl+arrastra desde el View Controller (círculo amarillo) hasta
-//     el botón "Toma foto o sube imagen" y elige  botonFoto.
-//     (El outlet botonCategoria ya lo tienes conectado.)
-//
-//  3. Permiso de cámara: abre Info.plist, clic derecho, Add Row.
-//     Key:   Privacy - Camera Usage Description
-//     Value: SMSeguro usa la cámara para adjuntar evidencia del fraude.
-//
-//     La galería no necesita permiso porque PHPickerViewController
-//     solo entrega la foto que el usuario elige.
-//
-//  4. Corre con Cmd+R. En el simulador solo verás "Elegir de la
-//     galería"; la cámara aparece únicamente en un iPhone real.
-// =====================================================================
